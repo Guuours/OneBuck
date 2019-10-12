@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using OneBuck.Models.WX;
+using System.Collections.Generic;
 
-namespace OneBuck.WeChat.Models
+namespace OneBuck.Models.MP
 {
-    public class MPUserInfoResp : AbstractResp
+    public class MPUserInfo : AbstractResp
     {
         public int Subscribe { get; set; }
 
@@ -17,7 +18,7 @@ namespace OneBuck.WeChat.Models
         public string City { get; set; }
 
         public string Province { get; set; }
-        
+
         public string Country { get; set; }
 
         public string HeadImgUrl { get; set; }

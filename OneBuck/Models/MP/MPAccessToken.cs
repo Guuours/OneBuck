@@ -1,8 +1,9 @@
 ﻿using Newtonsoft.Json;
+using OneBuck.Models;
 
-namespace OneBuck.WeChat.Models
+namespace OneBuck.Models.MP
 {
-    public class MPAccessTokenResp : AbstractResp
+    public class MPAccessToken : AbstractResp
     {
         [JsonProperty("access_token")]
         public string AccessToken { get; set; }

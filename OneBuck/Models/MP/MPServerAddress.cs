@@ -1,9 +1,10 @@
 ﻿using Newtonsoft.Json;
+using OneBuck.Models;
 using System.Collections.Generic;
 
-namespace OneBuck.WeChat.Models
+namespace OneBuck.Models.MP
 {
-    public class MPServerAddressResp : AbstractResp
+    public class MPServerAddress : AbstractResp
     {
         [JsonProperty("ip_list")]
         public List<string> IPList { get; set; }

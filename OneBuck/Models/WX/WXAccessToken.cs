@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace OneBuck.WeChat.Models
+namespace OneBuck.Models.WX
 {
-    public class WeChatAccessTokenResp : AbstractResp
+    public class WXAccessToken : AbstractResp
     {
         [JsonProperty("access_token")]
         public string AccessToken { get; set; }

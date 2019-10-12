@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace OneBuck.WeChat.Models
+namespace OneBuck.Models.MP
 {
-    public class MPSessionKeyResp : AbstractResp
+    public class MPSessionKey : AbstractResp
     {
         [JsonProperty("session_key")]
         public string SessionKey { get; set; }

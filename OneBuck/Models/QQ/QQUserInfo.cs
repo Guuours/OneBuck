@@ -1,6 +1,6 @@
-﻿namespace OneBuck.QQ.Models
+﻿namespace OneBuck.Models.QQ
 {
-    public class QQUserInfo : AbstractResp
+    public class QQUserInfo : QQAbstractResp
     {
         public string NickName { get; set; }
 

@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace OneBuck.WeChat.Models
+namespace OneBuck.Models.MP
 {
-    public class MPMessageResp : AbstractResp
+    public class MPMessageResult : AbstractResp
     {
         [JsonProperty("msgid")]
         public string MessageId { get; set; }

@@ -3,12 +3,12 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net40;</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.2.0</Version>
+    <Version>2.0.0</Version>
     <Authors>Guuours</Authors>
     <Company>Guuours</Company>
     <Description>Utility for integrating with tencent products</Description>
     <Copyright>Copyright @ Guuours 2019</Copyright>
-    <PackageReleaseNotes />
+    <PackageReleaseNotes>Structure refactor, add enterprise support</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

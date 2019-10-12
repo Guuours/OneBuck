@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace OneBuck.QQ.Models
+namespace OneBuck.Models.QQ
 {
-    public abstract class AbstractResp
+    public abstract class QQAbstractResp
     {
         [JsonProperty("ret")]
         public int ErrorCode { get; set; }

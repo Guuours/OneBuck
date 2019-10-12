@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29318.209
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneBuck", "OneBuck\OneBuck.csproj", "{9E375787-1B23-4196-BDDA-ABD972CD7023}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneBuck", "OneBuck\OneBuck.csproj", "{9E375787-1B23-4196-BDDA-ABD972CD7023}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneBuck.Tests", "OneBuck.Tests\OneBuck.Tests.csproj", "{ECC1584A-5536-487E-9D2F-0269F7AD03F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{9E375787-1B23-4196-BDDA-ABD972CD7023}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E375787-1B23-4196-BDDA-ABD972CD7023}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E375787-1B23-4196-BDDA-ABD972CD7023}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECC1584A-5536-487E-9D2F-0269F7AD03F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECC1584A-5536-487E-9D2F-0269F7AD03F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECC1584A-5536-487E-9D2F-0269F7AD03F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECC1584A-5536-487E-9D2F-0269F7AD03F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

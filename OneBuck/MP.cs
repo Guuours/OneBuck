@@ -2,54 +2,56 @@
 using Catalyzer.Cryptography;
 using Catalyzer.Math;
 using Newtonsoft.Json;
-using OneBuck.WeChat.Models;
+using OneBuck.Models.MP;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace OneBuck.WeChat
+namespace OneBuck
 {
     public class MP : Invoker
     {
-        public static MPAccessTokenResp GetAccessToken(string appId, string appSecret)
+        public static MPAccessToken GetAccessToken(string appId, string appSecret)
         {
             var url = $"https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={appId}&secret={appSecret}";
 
-            return RequestFor<MPAccessTokenResp>(url);
+            return RequestFor<MPAccessToken>(url);
         }
 
-        public static MPServerAddressResp GetServerAddress(string accessToken)
+        public static MPServerAddress GetServerAddress(string accessToken)
         {
             var url = $"https://api.weixin.qq.com/cgi-bin/getcallbackip?access_token={accessToken}";
 
-            return RequestFor<MPServerAddressResp>(url);
+            return RequestFor<MPServerAddress>(url);
         }
 
-        public static MPUserInfoResp GetUserInfo(string accessToken, string openId)
+        public static MPUserInfo GetUserInfo(string accessToken, string openId)
         {
             var url = $"https://api.weixin.qq.com/cgi-bin/user/info?access_token={accessToken}&openid={openId}&lang=zh_CN";
 
-            return RequestFor<MPUserInfoResp>(url);
+            return RequestFor<MPUserInfo>(url);
         }
 
-        public static MPUserListResp GetUserList(string accessToken, string nextOpenId = null)
+        public static MPUserList GetUserList(string accessToken, string nextOpenId = null)
         {
             var url = $"https://api.weixin.qq.com/cgi-bin/user/get?access_token={accessToken}&next_openid={nextOpenId}";
 
-            return RequestFor<MPUserListResp>(url);
+            return RequestFor<MPUserList>(url);
         }
 
-        public static MPTemplateListResp GetTemplateList(string accessToken)
+        public static MPTemplateList GetTemplateList(string accessToken)
         {
             var url = $"https://api.weixin.qq.com/cgi-bin/template/get_all_private_template?access_token={accessToken}";
 
-            return RequestFor<MPTemplateListResp>(url);
+            return RequestFor<MPTemplateList>(url);
         }
 
-        public static MPMessageResp SendTemplateMessage(string accessToken, string openId, string templateId, Dictionary<string, MPMessageParameter> @params, string jumpUrl = null)
+        public static MPMessageResult SendTemplateMessage(string accessToken, string openId, string templateId, Dictionary<string, MPMessageParameter> @params, string jumpUrl = null)
         {
+            var url = $"https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={accessToken}";
+
             var payload = new
             {
                 touser = openId,
@@ -58,16 +60,14 @@ namespace OneBuck.WeChat
                 url = jumpUrl
             };
 
-            var url = $"https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={accessToken}";
-
-            return RequestFor<MPMessageResp>(url, payload);
+            return RequestFor<MPMessageResult>(url, payload);
         }
 
-        public static MPSessionKeyResp GetSessionKey(string code, string appId, string secret)
+        public static MPSessionKey GetSessionKey(string code, string appId, string secret)
         {
             var url = $"https://api.weixin.qq.com/sns/jscode2session?appid={appId}&secret={secret}&js_code={code}&grant_type=authorization_code";
 
-            return RequestFor<MPSessionKeyResp>(url);
+            return RequestFor<MPSessionKey>(url);
         }
 
         public static JsTicketResp GetJsTicket(string accessToken)
@@ -98,7 +98,7 @@ namespace OneBuck.WeChat
             return signature == raw.SHA1();
         }
 
-        public static MPUserInfoResp DecryptData(string sessionKey, string iv, string data)
+        public static MPUserInfo DecryptData(string sessionKey, string iv, string data)
         {
             string output = string.Empty;
             using (Aes aes = Aes.Create())
@@ -122,12 +122,12 @@ namespace OneBuck.WeChat
                 }
             }
 
-            MPUserInfoResp userInfo;
+            MPUserInfo userInfo;
             try
             {
-                userInfo = JsonConvert.DeserializeObject<MPUserInfoResp>(output);
+                userInfo = JsonConvert.DeserializeObject<MPUserInfo>(output);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new OneBuckException("Error deserializing response", ex);
             }

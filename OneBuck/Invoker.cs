@@ -1,10 +1,11 @@
 ﻿using Newtonsoft.Json;
-using OneBuck.WeChat.Models;
+using OneBuck.Models;
+using OneBuck.Models.WX;
 using System;
 using System.Net;
 using System.Text;
 
-namespace OneBuck.WeChat
+namespace OneBuck
 {
     public abstract class Invoker
     {
@@ -20,7 +21,7 @@ namespace OneBuck.WeChat
                 {
                     json = client.DownloadString(url);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     throw new OneBuckException("Error communicating with remote server", ex);
                 }
@@ -31,7 +32,7 @@ namespace OneBuck.WeChat
                 {
                     ret = JsonConvert.DeserializeObject<T>(json);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     throw new OneBuckException("Error deserializing response", ex);
                 }

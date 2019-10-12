@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
+using OneBuck.Models;
 
-namespace OneBuck.WeChat.Models
+namespace OneBuck.Models.MP
 {
     public class JsTicketResp : AbstractResp
     {

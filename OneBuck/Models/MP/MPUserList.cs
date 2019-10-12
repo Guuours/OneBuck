@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace OneBuck.WeChat.Models
+namespace OneBuck.Models.MP
 {
-    public class MPUserListResp : AbstractResp
+    public class MPUserList : AbstractResp
     {
         public int Total { get; set; }
 

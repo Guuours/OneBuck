@@ -1,7 +1,14 @@
 ﻿using Newtonsoft.Json;
 
-namespace OneBuck.WeChat.Models
+namespace OneBuck.Models
 {
+    public enum Gender
+    {
+        Unknown,
+        Male,
+        Femail
+    }
+
     public abstract class AbstractResp
     {
         [JsonProperty("errcode")]

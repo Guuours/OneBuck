@@ -1,12 +1,6 @@
-﻿namespace OneBuck.WeChat.Models
+﻿namespace OneBuck.Models.WX
 {
-    public enum Gender
-    {
-        Male = 1,
-        Femail = 2
-    }
-
-    public class WeChatUserInfoResp : AbstractResp
+    public class WXUserInfo : AbstractResp
     {
         public string OpenId { get; set; }
 

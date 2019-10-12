@@ -1,14 +1,14 @@
 ﻿using Newtonsoft.Json;
-using OneBuck.QQ.Models;
+using OneBuck.Models.QQ;
 using System;
 using System.Net;
 using System.Text;
 
-namespace OneBuck.QQ
+namespace OneBuck
 {
-    public abstract class App
+    public class QQ
     {
-        protected static T RequestFor<T>(string url) where T : AbstractResp
+        protected static T RequestFor<T>(string url) where T : QQAbstractResp
         {
             using (WebClient client = new WebClient())
             {
@@ -35,7 +35,7 @@ namespace OneBuck.QQ
                 {
                     throw new OneBuckException("Error deserializing response", ex);
                 }
-                
+
                 if (ret.ErrorCode != 0)
                 {
                     throw new OneBuckException(ret.ErrorCode.ToString(), ret.ErrorMessage);

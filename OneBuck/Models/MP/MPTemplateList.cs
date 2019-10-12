@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace OneBuck.WeChat.Models
+namespace OneBuck.Models.MP
 {
-    public class MPTemplateListResp : AbstractResp
+    public class MPTemplateList : AbstractResp
     {
         [JsonProperty("template_list")]
         public List<MPTemplate> Templates { get; set; }

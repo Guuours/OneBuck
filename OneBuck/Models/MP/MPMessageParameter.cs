@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace OneBuck.WeChat.Models
+namespace OneBuck.Models.MP
 {
     public class MPMessageParameter
     {
