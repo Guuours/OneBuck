@@ -3,12 +3,12 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net40;</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2.0.1</Version>
+    <Version>2.0.2</Version>
     <Authors>Guuours</Authors>
     <Company>Guuours</Company>
     <Description>Utility for integrating with tencent products</Description>
     <Copyright>Copyright @ Guuours 2019</Copyright>
-    <PackageReleaseNotes>Structure refactor, add enterprise support</PackageReleaseNotes>
+    <PackageReleaseNotes>Js signature support for ENT module</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
