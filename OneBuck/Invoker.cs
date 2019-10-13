@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using OneBuck.Models;
-using OneBuck.Models.WX;
 using System;
 using System.Net;
 using System.Text;

@@ -70,21 +70,21 @@ namespace OneBuck
             return RequestFor<MPSessionKey>(url);
         }
 
-        public static JsTicketResp GetJsTicket(string accessToken)
+        public static MPJsTicket GetJsTicket(string accessToken)
         {
             var url = $"https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token={accessToken}&type=jsapi";
 
-            return RequestFor<JsTicketResp>(url);
+            return RequestFor<MPJsTicket>(url);
         }
 
-        public static JsSignature GetJsSignature(string ticket, string url)
+        public static MPJsSignature GetJsSignature(string ticket, string url)
         {
             var nonceString = Randomness.RandomText(16, RandomTextOption.All);
             var timestamp = DateTime.Now.ToUnixEpoch();
             var raw = $"jsapi_ticket={ticket}&noncestr={nonceString}&timestamp={timestamp}&url={url}";
             var signature = raw.SHA1().ToLower();
 
-            return new JsSignature
+            return new MPJsSignature
             {
                 NonceString = nonceString,
                 TimeStamp = timestamp,
