@@ -1,5 +1,9 @@
-﻿using OneBuck.Models.ENT;
+﻿using Catalyzer.Conversion;
+using Catalyzer.Cryptography;
+using Catalyzer.Math;
+using OneBuck.Models.ENT;
 using OneBuck.Models.MP;
+using System;
 
 namespace OneBuck
 {
@@ -92,6 +96,28 @@ namespace OneBuck
             };
 
             return RequestFor<ENTMessageResult>(reqUrl, payload);
+        }
+
+        public static MPJsTicket GetJsTicket(string accessToken)
+        {
+            var url = $"https://qyapi.weixin.qq.com/cgi-bin/get_jsapi_ticket?access_token={accessToken}";
+
+            return RequestFor<MPJsTicket>(url);
+        }
+
+        public static MPJsSignature GetJsSignature(string ticket, string url)
+        {
+            var nonceString = Randomness.RandomText(16, RandomTextOption.All);
+            var timestamp = DateTime.Now.ToUnixEpoch();
+            var raw = $"jsapi_ticket={ticket}&noncestr={nonceString}&timestamp={timestamp}&url={url}";
+            var signature = raw.SHA1().ToLower();
+
+            return new MPJsSignature
+            {
+                NonceString = nonceString,
+                TimeStamp = timestamp,
+                Signature = signature
+            };
         }
     }
 }

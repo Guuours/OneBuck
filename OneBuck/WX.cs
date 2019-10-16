@@ -1,4 +1,5 @@
-﻿using OneBuck.Models.WX;
+﻿using OneBuck.Models;
+using OneBuck.Models.WX;
 
 namespace OneBuck
 {

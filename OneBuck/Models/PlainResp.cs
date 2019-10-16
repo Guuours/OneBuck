@@ -1,6 +1,4 @@
-﻿using OneBuck.Models;
-
-namespace OneBuck.Models.WX
+﻿namespace OneBuck.Models
 {
     public class PlainResp : AbstractResp
     {

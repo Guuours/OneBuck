@@ -2,7 +2,7 @@
 
 namespace OneBuck.Models.MP
 {
-    public class JsSignature
+    public class MPJsSignature
     {
         [JsonProperty("noncestr")]
         public string NonceString { get; set; }
