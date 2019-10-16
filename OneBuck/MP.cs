@@ -15,42 +15,42 @@ namespace OneBuck
     {
         public static MPAccessToken GetAccessToken(string appId, string appSecret)
         {
-            var url = $"https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={appId}&secret={appSecret}";
+            var reqUrl = $"https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={appId}&secret={appSecret}";
 
-            return RequestFor<MPAccessToken>(url);
+            return RequestFor<MPAccessToken>(reqUrl);
         }
 
         public static MPServerAddress GetServerAddress(string accessToken)
         {
-            var url = $"https://api.weixin.qq.com/cgi-bin/getcallbackip?access_token={accessToken}";
+            var reqUrl = $"https://api.weixin.qq.com/cgi-bin/getcallbackip?access_token={accessToken}";
 
-            return RequestFor<MPServerAddress>(url);
+            return RequestFor<MPServerAddress>(reqUrl);
         }
 
         public static MPUserInfo GetUserInfo(string accessToken, string openId)
         {
-            var url = $"https://api.weixin.qq.com/cgi-bin/user/info?access_token={accessToken}&openid={openId}&lang=zh_CN";
+            var reqUrl = $"https://api.weixin.qq.com/cgi-bin/user/info?access_token={accessToken}&openid={openId}&lang=zh_CN";
 
-            return RequestFor<MPUserInfo>(url);
+            return RequestFor<MPUserInfo>(reqUrl);
         }
 
         public static MPUserList GetUserList(string accessToken, string nextOpenId = null)
         {
-            var url = $"https://api.weixin.qq.com/cgi-bin/user/get?access_token={accessToken}&next_openid={nextOpenId}";
+            var reqUrl = $"https://api.weixin.qq.com/cgi-bin/user/get?access_token={accessToken}&next_openid={nextOpenId}";
 
-            return RequestFor<MPUserList>(url);
+            return RequestFor<MPUserList>(reqUrl);
         }
 
         public static MPTemplateList GetTemplateList(string accessToken)
         {
-            var url = $"https://api.weixin.qq.com/cgi-bin/template/get_all_private_template?access_token={accessToken}";
+            var reqUrl = $"https://api.weixin.qq.com/cgi-bin/template/get_all_private_template?access_token={accessToken}";
 
-            return RequestFor<MPTemplateList>(url);
+            return RequestFor<MPTemplateList>(reqUrl);
         }
 
         public static MPMessageResult SendTemplateMessage(string accessToken, string openId, string templateId, Dictionary<string, MPMessageParameter> @params, string jumpUrl = null)
         {
-            var url = $"https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={accessToken}";
+            var reqUrl = $"https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={accessToken}";
 
             var payload = new
             {
@@ -60,21 +60,21 @@ namespace OneBuck
                 url = jumpUrl
             };
 
-            return RequestFor<MPMessageResult>(url, payload);
+            return RequestFor<MPMessageResult>(reqUrl, payload);
         }
 
         public static MPSessionKey GetSessionKey(string code, string appId, string secret)
         {
-            var url = $"https://api.weixin.qq.com/sns/jscode2session?appid={appId}&secret={secret}&js_code={code}&grant_type=authorization_code";
+            var reqUrl = $"https://api.weixin.qq.com/sns/jscode2session?appid={appId}&secret={secret}&js_code={code}&grant_type=authorization_code";
 
-            return RequestFor<MPSessionKey>(url);
+            return RequestFor<MPSessionKey>(reqUrl);
         }
 
         public static JsTicketResp GetJsTicket(string accessToken)
         {
-            var url = $"https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token={accessToken}&type=jsapi";
+            var reqUrl = $"https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token={accessToken}&type=jsapi";
 
-            return RequestFor<JsTicketResp>(url);
+            return RequestFor<JsTicketResp>(reqUrl);
         }
 
         public static JsSignature GetJsSignature(string ticket, string url)

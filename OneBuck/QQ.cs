@@ -47,9 +47,9 @@ namespace OneBuck
 
         public static QQUserInfo GetUserInfo(string accessToken, string consumerKey, string openId)
         {
-            var url = $"https://graph.qq.com/user/get_user_info?access_token={accessToken}&oauth_consumer_key={consumerKey}&openid={openId}&format=json";
+            var reqUrl = $"https://graph.qq.com/user/get_user_info?access_token={accessToken}&oauth_consumer_key={consumerKey}&openid={openId}&format=json";
 
-            return RequestFor<QQUserInfo>(url);
+            return RequestFor<QQUserInfo>(reqUrl);
         }
     }
 }

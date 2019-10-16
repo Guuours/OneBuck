@@ -7,49 +7,49 @@ namespace OneBuck
     {
         public static MPAccessToken GetAccessToken(string corpId, string corpSecret)
         {
-            var url = $"https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid={corpId}&corpsecret={corpSecret}";
+            var reqUrl = $"https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid={corpId}&corpsecret={corpSecret}";
 
-            return RequestFor<MPAccessToken>(url);
+            return RequestFor<MPAccessToken>(reqUrl);
         }
 
         public static ENTUserInfo GetUserInfo(string accessToken, string code)
         {
-            var url = $"https://qyapi.weixin.qq.com/cgi-bin/user/getuserinfo?access_token={accessToken}&code={code}";
+            var reqUrl = $"https://qyapi.weixin.qq.com/cgi-bin/user/getuserinfo?access_token={accessToken}&code={code}";
 
-            return RequestFor<ENTUserInfo>(url);
+            return RequestFor<ENTUserInfo>(reqUrl);
         }
 
         public static ENTUser GetUser(string accessToken, string userId)
         {
-            var url = $"https://qyapi.weixin.qq.com/cgi-bin/user/get?access_token={accessToken}&userid={userId}";
+            var reqUrl = $"https://qyapi.weixin.qq.com/cgi-bin/user/get?access_token={accessToken}&userid={userId}";
 
-            return RequestFor<ENTUser>(url);
+            return RequestFor<ENTUser>(reqUrl);
         }
 
         public static ENTDepartmentList GetDepartment(string accessToken, int id)
         {
-            var url = $"https://qyapi.weixin.qq.com/cgi-bin/department/list?access_token={accessToken}&id={id}";
+            var reqUrl = $"https://qyapi.weixin.qq.com/cgi-bin/department/list?access_token={accessToken}&id={id}";
 
-            return RequestFor<ENTDepartmentList>(url);
+            return RequestFor<ENTDepartmentList>(reqUrl);
         }
 
         public static ENTDepartmentList GetDepartmentList(string accessToken)
         {
-            var url = $"https://qyapi.weixin.qq.com/cgi-bin/department/list?access_token={accessToken}";
+            var reqUrl = $"https://qyapi.weixin.qq.com/cgi-bin/department/list?access_token={accessToken}";
 
-            return RequestFor<ENTDepartmentList>(url);
+            return RequestFor<ENTDepartmentList>(reqUrl);
         }
 
         public static ENTUserSimpleList GetSimpleUserList(string accessToken, int departmentId, bool recursive = false)
         {
-            var url = $"https://qyapi.weixin.qq.com/cgi-bin/user/simplelist?access_token={accessToken}&department_id={departmentId}&fetch_child={(recursive ? 1 : 0)}";
+            var reqUrl = $"https://qyapi.weixin.qq.com/cgi-bin/user/simplelist?access_token={accessToken}&department_id={departmentId}&fetch_child={(recursive ? 1 : 0)}";
 
-            return RequestFor<ENTUserSimpleList>(url);
+            return RequestFor<ENTUserSimpleList>(reqUrl);
         }
 
         public static ENTMessageResult SendText(string accessToken, string toUser, string toParty, string toTag, string agentId, string content, bool safe = false, bool enableIdTrans = false)
         {
-            var url = $"https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token={accessToken}";
+            var reqUrl = $"https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token={accessToken}";
 
             var payload = new
             {
@@ -66,7 +66,32 @@ namespace OneBuck
                 enable_id_trans = enableIdTrans ? 1 : 0
             };
 
-            return RequestFor<ENTMessageResult>(url, payload);
+            return RequestFor<ENTMessageResult>(reqUrl, payload);
+        }
+
+        public static ENTMessageResult SendTextCard(string accessToken, string toUser, string toParty, string toTag, string agentId, string title,
+            string description, string url, string btntxt, bool enableIdTrans = false)
+        {
+            var reqUrl = $"https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token={accessToken}";
+
+            var payload = new
+            {
+                touser = toUser,
+                toparty = toParty,
+                totag = toTag,
+                msgtype = "textcard",
+                agentid = agentId,
+                textcard = new
+                {
+                    title,
+                    description,
+                    url,
+                    btntxt
+                },
+                enable_id_trans = enableIdTrans ? 1 : 0
+            };
+
+            return RequestFor<ENTMessageResult>(reqUrl, payload);
         }
     }
 }
