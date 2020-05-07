@@ -2,18 +2,18 @@
 using Catalyzer.Cryptography;
 using Catalyzer.Math;
 using OneBuck.Models.ENT;
-using OneBuck.Models.MP;
+using OneBuck.Models.OA;
 using System;
 
 namespace OneBuck
 {
     public class ENT : Invoker
     {
-        public static MPAccessToken GetAccessToken(string corpId, string corpSecret)
+        public static OAAccessToken GetAccessToken(string corpId, string corpSecret)
         {
             var reqUrl = $"https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid={corpId}&corpsecret={corpSecret}";
 
-            return RequestFor<MPAccessToken>(reqUrl);
+            return RequestFor<OAAccessToken>(reqUrl);
         }
 
         public static ENTUserInfo GetUserInfo(string accessToken, string code)
@@ -98,21 +98,21 @@ namespace OneBuck
             return RequestFor<ENTMessageResult>(reqUrl, payload);
         }
 
-        public static MPJsTicket GetJsTicket(string accessToken)
+        public static OAJsTicket GetJsTicket(string accessToken)
         {
             var url = $"https://qyapi.weixin.qq.com/cgi-bin/get_jsapi_ticket?access_token={accessToken}";
 
-            return RequestFor<MPJsTicket>(url);
+            return RequestFor<OAJsTicket>(url);
         }
 
-        public static MPJsSignature GetJsSignature(string ticket, string url)
+        public static OAJsSignature GetJsSignature(string ticket, string url)
         {
             var nonceString = Randomness.RandomText(16, RandomTextOption.All);
             var timestamp = DateTime.Now.ToUnixEpoch();
             var raw = $"jsapi_ticket={ticket}&noncestr={nonceString}&timestamp={timestamp}&url={url}";
             var signature = raw.SHA1().ToLower();
 
-            return new MPJsSignature
+            return new OAJsSignature
             {
                 NonceString = nonceString,
                 TimeStamp = timestamp,

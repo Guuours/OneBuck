@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace OneBuck.Models.MP
+namespace OneBuck.Models.OA
 {
-    public class MPMessageResult : AbstractResp
+    public class OAMessageResult : AbstractResp
     {
         [JsonProperty("msgid")]
         public string MessageId { get; set; }

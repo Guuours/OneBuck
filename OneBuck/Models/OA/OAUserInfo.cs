@@ -1,9 +1,9 @@
 ﻿using OneBuck.Models.WX;
 using System.Collections.Generic;
 
-namespace OneBuck.Models.MP
+namespace OneBuck.Models.OA
 {
-    public class MPUserInfo : AbstractResp
+    public class OAUserInfo : AbstractResp
     {
         public int Subscribe { get; set; }
 

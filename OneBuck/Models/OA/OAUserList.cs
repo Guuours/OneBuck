@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace OneBuck.Models.MP
+namespace OneBuck.Models.OA
 {
-    public class MPUserList : AbstractResp
+    public class OAUserList : AbstractResp
     {
         public int Total { get; set; }
 

@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace OneBuck.Models.MP
+namespace OneBuck.Models.OA
 {
-    public class MPJsSignature
+    public class OAJsSignature
     {
         [JsonProperty("noncestr")]
         public string NonceString { get; set; }

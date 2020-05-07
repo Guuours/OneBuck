@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace OneBuck.Models.MP
+namespace OneBuck.Models.OA
 {
-    public class MPMessageParameter
+    public class OAMessageParameter
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -10,7 +10,7 @@ namespace OneBuck.Models.MP
         [JsonProperty("color")]
         public string Color { get; set; }
 
-        public MPMessageParameter(string value, string color = null)
+        public OAMessageParameter(string value, string color = null)
         {
             Value = value;
             Color = color;

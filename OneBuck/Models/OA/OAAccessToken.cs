@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
-using OneBuck.Models;
 
-namespace OneBuck.Models.MP
+namespace OneBuck.Models.OA
 {
-    public class MPAccessToken : AbstractResp
+    public class OAAccessToken : AbstractResp
     {
         [JsonProperty("access_token")]
         public string AccessToken { get; set; }

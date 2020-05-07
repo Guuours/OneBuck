@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace OneBuck.Models.MP
+namespace OneBuck.Models.OA
 {
-    public class MPTemplateList : AbstractResp
+    public class OATemplateList : AbstractResp
     {
         [JsonProperty("template_list")]
         public List<MPTemplate> Templates { get; set; }

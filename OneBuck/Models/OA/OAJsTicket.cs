@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace OneBuck.Models.MP
+namespace OneBuck.Models.OA
 {
-    public class MPJsTicket : AbstractResp
+    public class OAJsTicket : AbstractResp
     {
         public string Ticket { get; set; }
 
